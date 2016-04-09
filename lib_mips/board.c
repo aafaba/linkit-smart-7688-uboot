@@ -1305,19 +1305,6 @@ int check_image_validation(void)
 #define PIO_CLEAR0	0x40
 #define PIO_CLEAR1	0x44
 
-static int smart7688_led_state;
-
-void smart7688_led_blink(void)
-{
-	if (smart7688_led_state) {
-		RALINK_REG(RALINK_PIO_BASE+PIO_SET1) |= (1 << 12);
-		smart7688_led_state = 0;
-	} else {
-		RALINK_REG(RALINK_PIO_BASE+PIO_CLEAR1) |= (1 << 12);
-		smart7688_led_state = 1;
-	}
-}
-
 
 /************************************************************************
  *

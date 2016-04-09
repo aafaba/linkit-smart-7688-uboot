@@ -150,8 +150,7 @@ static int spic_transfer(const u8 *cmd, int n_cmd, u8 *buf, int n_buf, int flag)
 		for (retval = 0; retval < n_buf; retval++) {
 			ra_or(RT2880_SPI0_CTL_REG, SPICTL_STARTRD);
 			if (n_cmd != 1 && (retval & 0xffff) == 0) {
-				printf(".");
-				smart7688_led_blink();
+				printf(".");			
 			}
 			if (spic_busy_wait()) {
 				printf("\n");
@@ -1041,7 +1040,6 @@ int raspi_erase(unsigned int offs, int len)
 		offs += spi_chip_info->sector_size;
 		len -= spi_chip_info->sector_size;
 		printf(".");
-		smart7688_led_blink();
 	}
 	printf("\n");
 
@@ -1305,7 +1303,6 @@ int raspi_write(char *buf, unsigned int to, int len)
 		//printf("%s:: to:%x page_size:%x ret:%x\n", __func__, to, page_size, rc);
 		if ((retlen & 0xffff) == 0) {
 			printf(".");
-			smart7688_led_blink();
 		}
 
 		if (rc > 0) {

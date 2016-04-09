@@ -185,7 +185,6 @@ void usb_show_progress(void)
 	counter++;
 	if (counter > 10) {
 		printf(".");
-		smart7688_led_blink();
 		counter = 0;
 	}
 }
